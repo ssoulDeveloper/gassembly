@@ -39,20 +39,12 @@ fin: [ciclo finale]
 [Ciclo per scrittura]
 mov CX, h
 ciclo : 
-    inc x
-    cmp x,1
-    jne no
-    cmp x,h
-    jne no
-    Scrivi una fila completa di ********* <- necessita algoritmo
+    inc ah
+    cmp ah,1
+    je si
+    cmp ah,h
+    je si
+    scrive gli asterischi con gli spazi *     * <- necessita algoritmo
     jmp avanti
-    no : scrive gli asterischi con gli spazi *     * <- necessita algoritmo
-    avanti : 
-    loop ciclo
-
-
-
-
-
-
-
+    si : Scrivi una fila completa di ********* <- necessita algoritmo
+    avanti : loop ciclo
