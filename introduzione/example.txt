@@ -37,14 +37,21 @@ fin: [ciclo finale]
     if contatore = 1 metti il contenuto letto in L
     if contatore = 0 esci dal ciclo 
 [Ciclo per scrittura]
+; x è una variabile byte che uso come la x dei cicli FOR 
 mov CX, h
 ciclo : 
-    inc ah
-    cmp ah,1
+    inc x
+    cmp x,1
     je si
-    cmp ah,h
+    cmp x,h
     je si
     scrive gli asterischi con gli spazi *     * <- necessita algoritmo
     jmp avanti
-    si : Scrivi una fila completa di ********* <- necessita algoritmo
+    si : cmp al,b  ;algoritmo di scrittura *******
+        je avanti
+        mov dl, "*"  <- bisogna trovare il codice ASCII
+        mov ah,02h
+        int 21h
+        inc al
+        jmp si
     avanti : loop ciclo
