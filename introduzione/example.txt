@@ -1,0 +1,32 @@
+Pseudo linguaggio 
+Affinamenti presenti : 1
+Base:
+Leggi due misure(altezza [h] e lunghezza[L])
+Genera la prima riga di asterischi (con L asterischi)
+Genera delle righe con due soli asterisci distanzia di L-2 spazi
+Genera la riga finale come la prima
+-Affinamento 1
+[Algoritmo per la lettura] x2 <- da adattare il codice al nostro programma
+-- Un ciclo con contatore che :
+    if contatore = 2 metti il contenuto letto in h
+    if contatore = 1 metti il contenuto letto in L
+    if contatore = 0 esci dal ciclo 
+[Ciclo per scrittura I]
+-cont = h
+-Do while (cont > 0)
+    scrivi("*")
+    cont = cont - 1
+ Loop
+[Ciclo per scrittura II]
+ciclo con condizione iniziale tipo :
+cic: dec h
+     jz fin
+     ..... <- ;da Aggiornare bene il codice
+     jmp cic
+fin: [ciclo finale]
+-cont = h
+-Do while (cont > 0)
+    scrivi("*")
+    cont = cont - 1
+ Loop
+-Affinamento 2
