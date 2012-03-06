@@ -1,5 +1,5 @@
 Pseudo linguaggio 
-Affinamenti presenti : 1
+Affinamenti presenti : 2
 Base:
 Leggi due misure(altezza [h] e lunghezza[L])
 Genera la prima riga di asterischi (con L asterischi)
@@ -29,4 +29,30 @@ fin: [ciclo finale]
     scrivi("*")
     cont = cont - 1
  Loop
+
 -Affinamento 2
+[Algoritmo per la lettura] x2 <- da adattare il codice al nostro programma
+-- Un ciclo con contatore che :
+    if contatore = 2 metti il contenuto letto in h
+    if contatore = 1 metti il contenuto letto in L
+    if contatore = 0 esci dal ciclo 
+[Ciclo per scrittura]
+mov CX, h
+ciclo : 
+    inc x
+    cmp x,1
+    jne no
+    cmp x,h
+    jne no
+    Scrivi una fila completa di ********* <- necessita algoritmo
+    jmp avanti
+    no : scrive gli asterischi con gli spazi *     * <- necessita algoritmo
+    avanti : 
+    loop ciclo
+
+
+
+
+
+
+
