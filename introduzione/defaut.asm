@@ -91,6 +91,7 @@ ciclo:          ; ciclo di scrittura per h - 2 volte
 			inc bl
 	jmp ancora
 chiudi :mov DL,2Ah
+	mov AH,02h
 	int 21h
 avanti : loop ciclo
 mov ah,01h
