@@ -68,7 +68,7 @@ riga: 			; scrittura **********
 	int 21h
 	inc bl
 jmp riga
-ciclo:          ; ciclo di scrittura per h volte
+ciclo:          ; ciclo di scrittura per h - 2 volte
 	acapo
 	mov bl,0h
 	inc x	
@@ -76,7 +76,7 @@ ciclo:          ; ciclo di scrittura per h volte
 	je riga
 	ancora :     ; scritttura *    *
 		cmp bl,b
-		je avanti
+		je chiudi
 		inc bl
 		cmp bl,1
 		je ast
@@ -90,6 +90,8 @@ ciclo:          ; ciclo di scrittura per h volte
 			int 21h
 			inc bl
 	jmp ancora
+chiudi :mov DL,2Ah
+	int 21h
 avanti : loop ciclo
 mov ah,01h
 int 21h
