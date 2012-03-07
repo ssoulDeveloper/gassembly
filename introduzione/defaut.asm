@@ -70,27 +70,22 @@ riga: 			; scrittura **********
 jmp riga
 ciclo:          ; ciclo di scrittura per h - 2 volte
 	acapo
-	mov bl,0h
+	mov bl,1h
 	inc x	
 	cmp x,dh ; sarebbe un cmp x,h
 	je riga
-	ancora :     ; scritttura *    *
+	mov DL,2Ah; primo asterisco
+	mov AH,02h
+	int 21h
+	ancora :     ; scritttura degli spazzi
+		inc bl
 		cmp bl,b
 		je chiudi
-		inc bl
-		cmp bl,1
-		je ast
-		cmp bl, b
-		je ast
 		mov dl,20h
-		jmp salto
-		ast : mov dl,2Ah
-		salto :	
-			mov ah,02h
-			int 21h
-			inc bl
+		mov ah,02h
+		int 21h
 	jmp ancora
-chiudi :mov DL,2Ah
+chiudi :mov DL,2Ah ; ultimo asterisco
 	mov AH,02h
 	int 21h
 avanti : loop ciclo
