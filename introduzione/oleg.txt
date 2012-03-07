@@ -1,0 +1,49 @@
+.data
+strb dw "Inserisci lunghezza -> $"
+strh dw "Inserisci l'altezza -> $"
+dieci dw 0Ah
+num dw 0000
+x dw 0000
+b dw 0000
+h dw 0000
+.code
+acapo macro
+  mov DL,0Ah
+  mov AH,02h
+  int 21h
+  mov DL,0Dh
+  mov AH,02h
+  int 21h
+endm
+mov CL,02h
+leggi: acapo ; richiama la macro
+    cmp CL,1 ; decide la frase da scrivere
+    je struno
+    lea DX,strb
+    jmp str
+struno: lea DX strh
+str:mov AH,09h
+    int 21h
+ciclet: mv AH,01h ; ciclo di lettura
+        int 21h
+        cmp AL,0Dh
+        jz esci
+        sub AL,30h
+        mov AH,00
+        push AX
+        mov AX,num
+        mov DX,0000
+        mul dieci
+        pop BX
+        add AX,BX
+        mov num,AX
+        jmp ciclet
+esci:mov BX,num ; decide dove mettere il numero letto
+     cmp CL,01h
+     je uno
+     mov b,BX
+     jmp oltre
+uno: mov h,BX
+oltre:dec CL
+    jnz leggi ; al posto di jmp e poi cmp possiamo utilizzare solo questo jnz
+.... NEXT is your code
