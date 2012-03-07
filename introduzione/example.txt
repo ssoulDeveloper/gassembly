@@ -49,7 +49,7 @@ ciclo :
     jmp avanti
     si : cmp al,b  ;algoritmo di scrittura *******
         je avanti
-        mov dl, "*"  <- bisogna trovare il codice ASCII
+        mov dl,20h
         mov ah,02h
         int 21h
         inc al
