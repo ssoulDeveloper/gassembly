@@ -1,0 +1,57 @@
+Pseudo linguaggio 
+Affinamenti presenti : 2
+Base:
+Leggi due misure(altezza [h] e lunghezza[L])
+Genera la prima riga di asterischi (con L asterischi)
+Genera delle righe con due soli asterisci distanzia di L-2 spazi
+Genera la riga finale come la prima
+-Affinamento 1
+[Algoritmo per la lettura] x2 <- da adattare il codice al nostro programma
+-- Un ciclo con contatore che :
+    if contatore = 2 metti il contenuto letto in h
+    if contatore = 1 metti il contenuto letto in L
+    if contatore = 0 esci dal ciclo 
+[Ciclo per scrittura I]
+-cont = h
+-Do while (cont > 0)
+    scrivi("*")
+    cont = cont - 1
+ Loop
+[Ciclo per scrittura II]
+ciclo con condizione iniziale tipo :
+cic: dec h
+     jz fin
+     ..... <- ;da Aggiornare bene il codice
+     jmp cic
+fin: [ciclo finale]
+-cont = h
+-Do while (cont > 0)
+    scrivi("*")
+    cont = cont - 1
+ Loop
+
+-Affinamento 2
+[Algoritmo per la lettura] x2 <- da adattare il codice al nostro programma
+-- Un ciclo con contatore che :
+    if contatore = 2 metti il contenuto letto in h
+    if contatore = 1 metti il contenuto letto in L
+    if contatore = 0 esci dal ciclo 
+[Ciclo per scrittura]
+; x è una variabile byte che uso come la x dei cicli FOR 
+mov CX, h
+ciclo : 
+    inc x
+    cmp x,1
+    je si
+    cmp x,h
+    je si
+    scrive gli asterischi con gli spazi *     * <- necessita algoritmo
+    jmp avanti
+    si : cmp al,b  ;algoritmo di scrittura *******
+        je avanti
+        mov dl, "*"  <- bisogna trovare il codice ASCII
+        mov ah,02h
+        int 21h
+        inc al
+        jmp si
+    avanti : loop ciclo
